@@ -1,0 +1,522 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Sports Analytics - Building a xG Model with Linear Regression (Python, Sklearn, Seaborn) - Tatu’s Portfolio</title>
+<meta name="description" content="1. Introduction">
+
+
+  <meta name="author" content="@ain237">
+  
+  <meta property="article:author" content="@ain237">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Tatu's Portfolio">
+<meta property="og:title" content="Sports Analytics - Building a xG Model with Linear Regression (Python, Sklearn, Seaborn)">
+<meta property="og:url" content="/xg-post/">
+
+
+  <meta property="og:description" content="1. Introduction">
+
+
+
+  <meta property="og:image" content="/assets/xg-post/football.jpeg">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-07-23T00:00:00+03:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/xg-post/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "@ain237 on GitHub",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Tatu's Portfolio Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Tatu's Portfolio
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: url('/assets/xg-post/football.jpeg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Sports Analytics - Building a xG Model with Linear Regression (Python, Sklearn, Seaborn)
+
+        
+      </h1>
+      
+        <p class="page__lead">
+</p>
+      
+      
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+      
+      
+    </div>
+  
+  
+    <span class="page__hero-caption">Photo credit: <a href="https://pixabay.com/photos/football-soccer-ball-goal-game-2518982/"><strong>Kelvin Stuttard</strong></a>
+</span>
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/img1.png" alt="@ain237" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">@ain237</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>A Master’s level student studying Information Systems with a focus on Business Analytics and Data Science. I have completed the Google Data Analyst professional certificate, and some of these projects were a part of the capstone course of the certificate.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Espoo, Finland</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/ain237" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Sports Analytics - Building a xG Model with Linear Regression (Python, Sklearn, Seaborn)">
+    <meta itemprop="description" content="1. Introduction">
+    <meta itemprop="datePublished" content="2021-07-23T00:00:00+03:00">
+    
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h2 id="1-introduction">1. Introduction</h2>
+
+<p>Soccer match, like a match in any sports competition is an one-time performance faced with many uncertainties. On a bad day an excellent player will miss many goals, and some bad players might win out of pure luck. To understand the real performance of players, many soccer analysts have created models that are called xG-models, that vary in complexity. These models try to analyze the gameplay and come up with a numerical value of how many goals were expected from the game.</p>
+
+<p>Complex xG models, such as one that we will use in this report, analyze complex data from the game, such as position on the map at certain time, and evaluate a chance for each shot of hitting the goal. When a xG model is accurate, it is much more useful to analyze the expected goals of a player or a team, rather than how many goals were scored during a match. The expected goals also predict the future performance very effectively compared to analyzing only the actual goals.</p>
+
+<p>In this report we will present a xG model for analyzing the results of four European countries. The model will use complex data-analysis methods such as Logistic Regression, and will be trained using data from European soccer championships. The report will be accompanied by a Python-notebook, where the calculations are done. The data is sourced from a publicly available dataset.</p>
+
+<h2 id="2-data-description">2. Data Description</h2>
+<p>The dataset used in this report contains the following categories:</p>
+<ul>
+  <li>Competition data: European Championship</li>
+  <li>Competition data: World Cup</li>
+  <li>Country data for:
+    <ul>
+      <li>France</li>
+      <li>Germany</li>
+      <li>Italy</li>
+      <li>Spain</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The data contains a set of shots during a game. The data was collected using cameras and manually inputted to the data file by human operators. Some of the data points were removed or converted during the data cleanup. For our analysis we will use the following information for a single shot:</p>
+<ul>
+  <li>X-coordinate</li>
+  <li>Y-coordinate</li>
+  <li>Whether feet or head was used (foot, head)</li>
+</ul>
+
+<h2 id="3-creating-a-xg-model">3. Creating a xG Model</h2>
+<h3 id="31-rationale">3.1. Rationale</h3>
+
+<p>Following the example of a lecturer on Youtube (Friends of Tracking, 2020), we will use the distance of a player to the goal, as well as their visibility angle.</p>
+
+<p><img src="/assets/xg-post/field_of_visibility.jpg" alt="Visibility angle of a player" title="Figure 1: Visibility angle of a player " />
+Figure 2: Probability of scoring from a point in field.
+<a href="https://photostockeditor.com/image/football-soccer-player-making-goal-soccer-34841" title="(image source)">(image source)</a></p>
+
+<p>To help our algorithm to better predict the likelihood of shooting a goal, we will generate two additional variables:</p>
+
+<ol>
+  <li>
+    <p>Distance from goal</p>
+
+    <p>The coordinate for the midpoint of the goal is (100,50)</p>
+
+    <p><img src="/assets/xg-post/formula1.png" alt="1st formula" title=" " /></p>
+  </li>
+  <li>
+    <p>Visibility angle
+ The visibility angle is calculated using the formula for angle between two straight lines. The two straight lines are calculated from the location of the player to both ends of the goal area. The coordinates for goal endpoints are (100,53) and (100,47). The formulas for the calculation are:</p>
+
+    <p><img src="/assets/xg-post/formula2.png" alt="2nd formula" title=" " /></p>
+  </li>
+</ol>
+
+<p>The calculated values in our Python-notebook can be seen from Table 1.</p>
+
+<p><img src="/table1.png" alt="Table 1" title="Table1 1: Example of the calculated values" /></p>
+
+<h3 id="32-model-building-logistic-regression">3.2. Model Building: Logistic Regression</h3>
+
+<p>For our xG model, we will use the L2 Logistic regression model with lbfgs-solver. According to Friends of Tracking (2020), Logistic regression is best suited for this type of problem, and we will thus not try other machine learning algorithms.
+In order to see that our algorithm works well, we will attempt first to generate a dataset with only x,y coordinates and not use any of the other variables for training the model. The model is trained with a split that uses 70% of the data for training the model, and 30% for testing.</p>
+
+<p>The first run with only x,y coordinates show the model to be 90.18% accurate. This seems sufficiently good. To understand whether the model understands the game mechanics, we will generate a heatmap in top of an image of a soccer field that shows the spots with high probability for scoring.</p>
+
+<p><img src="/assets/xg-post/soccerfield.png" alt="Figure 2" title="Figure 2: Probability of scoring from a point in field." /></p>
+
+<p>The heatmap in Figure 2 demonstrates that our model has successfully captured the mechanics of the game. We will continue by introducing the other variables foot, head, opportunity to our algorithm. The new data is seen on Table 2.</p>
+
+<p><img src="/assets/xg-post/table2.png" alt="Table 2" title="Table 2: Data with all variables." /></p>
+
+<h3 id="33-model-evaluation">3.3. Model Evaluation</h3>
+
+<p>After introducing the other variables to our algorithm, the model’s accuracy score improves very slightly to 90.46%. To further understand the model, we will calculate a confusion matrix, that intends to further explain, which predictions are accurate.</p>
+
+<p><img src="/assets/xg-post/cfmatrix.png" alt="Figure 3" title="Figure 3: Confusion matrix" /></p>
+
+<p>The confusion matrix shows that when the model makes a 1 or 0 prediction about whether a goal will be scored, it is surprisingly inaccurate. When the model predicts that a goal will be scored, the predictions are right only about 1 time in 10 predictions. When the model however predicts that no goal will be scored, it is incredibly accurate. This information is useful when we are comparing the results of different countries in the next section.</p>
+
+<p>For our xG model we are the most interested in the ability of our model to predict probabilities of scoring. The heamap in Figure 2 shows that our model accurately understands the game-mechanics, and its accuracy score after introducing new variables is 90.46%. The model is therefore considered reliable.</p>
+
+<h2 id="4-discussion-and-conclusions">4. Discussion and Conclusions</h2>
+<h3 id="41-evaluating-the-performance-of-4-european-countries-using-our-xg-model">4.1. Evaluating the Performance of 4 European Countries Using Our xG Model</h3>
+
+<p>To show the usefulness of our xG model, we will compare the data from 4 European countries and their performance.</p>
+
+<p><img src="/assets/table3.png" alt="Table 3" title="Table 3: Performance of the European countries." /></p>
+
+<p><img src="/assets/xg-post/countries.png" alt="Figure 4" title="Figure 4: Bar plot comparison of the European countries." /></p>
+
+<p>The performance of the European countries shown in Table 3 and Figure 4 shows the performance of each country. Interesting finding from the results is that in expected goals, Germany beats Spain very slightly, although in actual goals Spain performs better. Out of these countries, Germany would therefore be the best.</p>
+
+<h3 id="42-conclusions">4.2. Conclusions</h3>
+
+<p>The xG model we built using Logistic regression was found to be accurate for predicting expected goals, and it has useful real-life applications for evaluating team and player performance, and mapping the area in which the goal is likely to be made (Figure 2). This is useful information for training players. One training implication from this model is that the players should be instructed to shoot only from areas with for example above 50% chance of shooting a goal. In order to generate a more accurate model, more data would be needed. One example of this would be include more information about penalty kicks.</p>
+
+<h2 id="5-references">5. References</h2>
+
+<p>Friends of Tracking, 2020. How to Build An Expected Goals Model 1: Data and Model. [video] Available at: https://www.youtube.com/watch?v=bpjLyFyLlXs [Accessed 23 March 2021].</p>
+
+<p>Pappalardo L and Massucco E (2019) Soccer match event dataset. Figshare. Available at: https://figshare.com/collections/Soccer_match_event_dataset/4415000/2 [Accessed 31 July 2021].</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-07-23T00:00:00+03:00">July 23, 2021</time></p>
+
+      </footer>
+
+      
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+            
+      </div>
+    </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 @ain237 on GitHub. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
