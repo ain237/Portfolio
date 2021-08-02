@@ -1360,8 +1360,7 @@ plt.show()
 
 
     
-![png](output_37_0.png)
-    
+![png]({{"assets/xg-post/output_37_0.png" | relative_url }})
 
 
 ## 2. Building xG model with all attributes from data
@@ -1556,13 +1555,13 @@ plt.show()
 
 
     
-![png](output_50_1.png)
+![png]({"assets/xg-post/output_50_1.png" | relative_url }})
     
 
 
 
     
-![png](output_50_2.png)
+![png]({"assets/xg-post/output_50_2.png" | relative_url }})
     
 
 
@@ -2038,7 +2037,8 @@ plt.show()
 
 
     
-![png](output_65_0.png)
+![png]({"assets/xg-post/output_65_0.png" | relative_url }})
+
     
 
 
