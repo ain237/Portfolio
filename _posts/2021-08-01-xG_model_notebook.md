@@ -1557,13 +1557,14 @@ plt.show()
 
 
     
-![png]({"assets/xg-post/output_50_1.png" | relative_url }})
-    
-
-
+![png]({{"assets/xg-post/output_50_1.png" | relative_url }})
 
     
-![png]({"assets/xg-post/output_50_2.png" | relative_url }})
+
+
+
+    
+![png]({{"assets/xg-post/output_50_2.png" | relative_url }})
     
 
 
@@ -2039,7 +2040,7 @@ plt.show()
 
 
     
-![png]({"assets/xg-post/output_65_0.png" | relative_url }})
+![png]({{"assets/xg-post/output_65_0.png" | relative_url }})
 
     
 
