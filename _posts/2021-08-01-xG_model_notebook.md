@@ -1,11 +1,10 @@
 ---
+hidden: true
 title:  "[NOTEBOOK] Sports Analytics - Building a xG Model with Linear Regression (Python, Sklearn, Seaborn)"
-
 tagline: " "
 header:
   overlay_image: /assets/xg-post/football.jpeg
   caption: "Photo credit: [**Kelvin Stuttard**](https://pixabay.com/photos/football-soccer-ball-goal-game-2518982/)"
-visible: 0
 
 ---
 
