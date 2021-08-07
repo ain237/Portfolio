@@ -5,6 +5,7 @@ tagline: " "
 header:
   overlay_image: /assets/vaccine-post/tweet.jpg
   caption: "Photo credit: [**MDGovpics**](https://search.creativecommons.org/photos/01fdd347-e40b-4a70-9634-08713a49e7f8)"
+  teaser: /assets/vaccine-post/tweet.jpg
 ---
 
 This page contains an easily readable report on the data analysis. To view the code, click here:  
