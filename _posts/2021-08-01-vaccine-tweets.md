@@ -1,3 +1,14 @@
+
+---
+title:  "NLP Project - Analyzing Covid Vaccine Tweets Sentiment (Python, GeoPy, Vader-sentiment, PorterStemmer)"
+
+tagline: " "
+header:
+  overlay_image: /assets/xg-post/tweet.jpg
+  caption: "Photo credit: [**MDGovpics**](https://search.creativecommons.org/photos/01fdd347-e40b-4a70-9634-08713a49e7f8)"
+---
+
+
 ## Introduction
 
 
@@ -1004,8 +1015,8 @@ plt.show()
 
 
     
-![png](output_22_0.png)
-    
+![output_22_0]({{"assets/vaccine-post/output_22_0.png" | relative_url }} " ")
+
 
 
 ### Canadians seem to be the most positive about the vaccine, while Indians were the most negative in this dataset.
@@ -1027,8 +1038,8 @@ plt.show()
 
 
     
-![png](output_25_0.png)
-    
+![output_25_0]({{"assets/vaccine-post/output_25_0.png" | relative_url }} " ")
+
 
 
 ### The results seem odd. Testing with T-Test to confirm the result.
@@ -1342,8 +1353,8 @@ plt.show()
 
 
     
-![png](output_34_0.png)
-    
+![output_34_0]({{"assets/vaccine-post/output_34_0.png" | relative_url }} " ")
+
 
 
 
@@ -1396,7 +1407,9 @@ plt.show()
 
 
     
-![png](output_37_0.png)
+
+![output_37_0]({{"assets/vaccine-post/output_37_0.png" | relative_url }} " ")
+
     
 
 
@@ -1405,7 +1418,9 @@ plt.show()
 
 
     
-![png](output_37_2.png)
+
+![output_37_2]({{"assets/vaccine-post/output_37_2.png" | relative_url }} " ")
+
     
 
 
@@ -1473,8 +1488,9 @@ plt.show()
 
 
     
-![png](output_39_1.png)
-    
+
+![output_39_1]({{"assets/vaccine-post/output_39_1.png" | relative_url }} " ")
+
 
 
 ### As suspected from the plot, the R-squared is close to zero with very small coefficient.
@@ -1520,8 +1536,8 @@ plt.show()
 
 
     
-![png](output_43_0.png)
-    
+![output_43_0]({{"assets/vaccine-post/output_43_0.png" | relative_url }} " ")
+
 
 
 
@@ -1564,13 +1580,13 @@ plt.show()
 
 
     
-![png](output_44_0.png)
+![output_44_0]({{"assets/vaccine-post/output_44_0.png" | relative_url }} " ")
     
 
 
 
     
-![png](output_44_1.png)
+![output_44_1]({{"assets/vaccine-post/output_44_1.png" | relative_url }} " ")
     
 
 
@@ -1676,13 +1692,13 @@ plt.show();
 
 
     
-![png](output_48_0.png)
+![output_48_0]({{"assets/vaccine-post/output_48_0.png" | relative_url }} " ")
     
 
 
 
     
-![png](output_48_1.png)
+![output_48_1]({{"assets/vaccine-post/output_48_1.png" | relative_url }} " ")
     
 
 
@@ -1749,7 +1765,7 @@ plt.show();
 
 
     
-![png](output_50_1.png)
+![output_50_1]({{"assets/vaccine-post/output_50_1.png" | relative_url }} " ")
     
 
 
@@ -1758,7 +1774,7 @@ plt.show();
 
 
     
-![png](output_50_3.png)
+![output_50_3]({{"assets/vaccine-post/output_50_3.png" | relative_url }} " ")
     
 
 
