@@ -4,7 +4,7 @@ title:  "NLP Project - Analyzing Covid Vaccine Tweets Sentiment (Python, GeoPy, 
 
 tagline: " "
 header:
-  overlay_image: /assets/xg-post/tweet.jpg
+  overlay_image: /assets/vaccine-post/tweet.jpg
   caption: "Photo credit: [**MDGovpics**](https://search.creativecommons.org/photos/01fdd347-e40b-4a70-9634-08713a49e7f8)"
 ---
 
