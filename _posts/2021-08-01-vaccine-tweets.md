@@ -1,4 +1,3 @@
-
 ---
 title:  "NLP Project - Analyzing Covid Vaccine Tweets Sentiment (Python, GeoPy, Vader-sentiment, PorterStemmer)"
 
@@ -7,6 +6,9 @@ header:
   overlay_image: /assets/vaccine-post/tweet.jpg
   caption: "Photo credit: [**MDGovpics**](https://search.creativecommons.org/photos/01fdd347-e40b-4a70-9634-08713a49e7f8)"
 ---
+
+This page contains an easily readable report on the data analysis. To view the code, click here:  
+## [Link to Jupyter notebook on GitHub](https://github.com/ain237/data-science-projects/blob/main/sports-analysis-xG-model/xG_model_notebook.ipynb " ")
 
 
 ## Introduction
