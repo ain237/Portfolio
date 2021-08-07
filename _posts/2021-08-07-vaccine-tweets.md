@@ -8,7 +8,7 @@ header:
 ---
 
 This page contains an easily readable report on the data analysis. To view the code, click here:  
-## [Link to Jupyter notebook on GitHub](https://github.com/ain237/data-science-projects/blob/main/sports-analysis-xG-model/xG_model_notebook.ipynb " ")
+## [Link to Jupyter notebook on GitHub](https://github.com/ain237/data-science-projects/blob/main/nlp-vaccine-tweets/vaccine_tweets.ipynb " ")
 
 
 ## Introduction
